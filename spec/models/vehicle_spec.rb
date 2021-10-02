@@ -5,6 +5,7 @@ RSpec.describe Vehicle, type: :model do
   it { should validate_presence_of(:plate) }
   it { should allow_value('RTV-1234').for(:plate) }
   it { should_not allow_values('rtv-1234', '1234', 'RTV1234').for(:plate) }
+  it { should have_many(:parking_reservations) }
 
   describe('factory') do
     describe('is_valid?') do
