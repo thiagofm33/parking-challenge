@@ -13,5 +13,3 @@
 3. Create and migrate the DBs
 
         $ docker-compose run api rails db:create db:migrate
-
-   > important: The services must be up and running, hence this command must be run after `docker-compose up`.
