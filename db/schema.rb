@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_10_02_163730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "plate", limit: 8, null: false
+    t.integer "vehicle_type", limit: 2
+    t.string "make"
+    t.string "model"
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plate"], name: "index_vehicles_on_plate", unique: true
+  end
 
 end
