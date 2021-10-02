@@ -8,7 +8,7 @@
 
         $ sudo chown -R $USER:$USER .
 
-   > Note: it is needed because the `tmp/db` folder
+   > Note: it might be needed because of the `tmp/db` folder
 
 3. Create and migrate the DBs
 
