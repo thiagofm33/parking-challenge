@@ -46,12 +46,14 @@ RSpec.describe ParkingReservation, type: :model do
   describe('Instance methods') do
     describe('time') do
       subject do
-        FactoryBot.create(:parking_reservation, :paid,
-          check_out_at: (7200 - 60 - 2).seconds.ago)
+        FactoryBot.create(:parking_reservation, :paid, {
+          check_in_at: 3.hours.ago,
+          check_out_at: 30.minutes.ago
+        })
       end
 
       it 'should return a humanized duration' do
-        expect(subject.time).to eq '1 hour 1 minute and 1 second'
+        expect(subject.time).to eq '2 hours and 30 minutes'
       end
     end
 

@@ -12,7 +12,7 @@ module App::NumericHelpers
       ("#{seconds} #{'second'.pluralize(seconds)}" if seconds > 0)
     ].compact
 
-    duration.insert(1, ' ') if duration.length > 2
+    duration.insert(1, ', ') if duration.length > 2
     duration.insert(-2, ' and ') if duration.length > 1
     duration.join('')
   end

@@ -1,3 +1,3 @@
 json.reservations @vehicle.parking_reservations do |reservation|
-  json.extract! reservation, :id, :time, :paid, :left
+  json.partial! 'parking_reservation', reservation: reservation
 end
