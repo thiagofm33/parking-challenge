@@ -4,13 +4,6 @@ orbs:
   ruby: circleci/ruby@1.0
 
 jobs:
-  build:
-    docker:
-      - image: cimg/ruby:2.7-node
-    steps:
-      - checkout
-      - ruby/install-deps
-
   test:
     docker:
       - image: cimg/ruby:2.7-node
@@ -39,20 +32,10 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - feature/circle-ci-configuration
-                - main
-                - develop
       - test:
-          requires:
-            - build
           filters:
             branches:
               only:
-                - feature/circle-ci-configuration
                 - main
                 - develop
 
