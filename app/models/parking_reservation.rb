@@ -18,6 +18,18 @@ class ParkingReservation < ApplicationRecord
     errors.messages.merge(vehicle.errors.messages)
   end
 
+  def time
+    ((check_out_at || Time.now) - check_in_at).to_human_duration
+  end
+
+  def paid
+    paid_at.present?
+  end
+
+  def left
+    check_out_at.present?
+  end
+
   #
   # Validation Methods
   #

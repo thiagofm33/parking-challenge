@@ -12,5 +12,10 @@ FactoryBot.define do
     trait :paid do
       paid_at { 1.hour.ago }
     end
+
+    trait :left do
+      paid_at { 1.hour.ago }
+      check_out_at { paid_at }
+    end
   end
 end

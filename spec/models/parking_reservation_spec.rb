@@ -43,10 +43,43 @@ RSpec.describe ParkingReservation, type: :model do
     end
   end
 
-  describe('factory') do
+  describe('Instance methods') do
+    describe('time') do
+      subject do
+        FactoryBot.create(:parking_reservation, :paid,
+          check_out_at: (7200 - 60 - 2).seconds.ago)
+      end
+
+      it 'should return a humanized duration' do
+        expect(subject.time).to eq '1 hour 1 minute and 1 second'
+      end
+    end
+
+    describe('paid') do
+      let(:paid_reservation) { FactoryBot.create(:parking_reservation, :paid) }
+      let(:not_paid_reservation) { FactoryBot.create(:parking_reservation) }
+
+      it 'should return if the reservation was paid or not' do
+        expect(paid_reservation.paid).to eq true
+        expect(not_paid_reservation.paid).to eq false
+      end
+    end
+
+    describe('left') do
+      let(:finished_reservation) { FactoryBot.create(:parking_reservation, :left) }
+      let(:active_reservation) { FactoryBot.create(:parking_reservation) }
+
+      it 'should return if the reservation was paid or not' do
+        expect(finished_reservation.left).to eq true
+        expect(active_reservation.paid).to eq false
+      end
+    end
+  end
+
+  describe('Factory') do
     describe('`is_valid?`') do
-      let(:parking_reservation) { FactoryBot.build(:parking_reservation) }
-      it { expect(parking_reservation.valid?).to be true }
+      subject { FactoryBot.build(:parking_reservation) }
+      it { expect(subject).to be_valid }
     end
   end
 end
