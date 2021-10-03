@@ -44,7 +44,7 @@ workflows:
             branches:
               only:
                 - feature/circle-ci-configuration
-                - master
+                - main
                 - develop
       - test:
           requires:
@@ -53,6 +53,6 @@ workflows:
             branches:
               only:
                 - feature/circle-ci-configuration
-                - master
+                - main
                 - develop
 
