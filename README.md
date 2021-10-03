@@ -28,7 +28,7 @@ paid_at       | datetime |
 ## Quick Access
 
   - **Models**
-    + [Vehicle](app/models/parking_reservation.rb)
+    + [Vehicle](app/models/vehicle.rb)
     + [ParkingReservation](app/models/parking_reservation.rb)
   - **Migrations**
     + [CreateVehicles](db/migrate/20211002163730_create_vehicles.rb)
