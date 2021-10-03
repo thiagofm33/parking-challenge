@@ -1,11 +1,22 @@
 class ParkingReservation < ApplicationRecord
   belongs_to :vehicle
 
+  validates_associated :vehicle
   validates :vehicle, presence: true
   validates :check_in_at, presence: true
 
   validate :is_check_out_allowed?
   validate :vehicle_has_no_active_reservation?, on: :create
+
+  def self.create_with_plate(plate)
+    vehicle = Vehicle.find_or_create_by(plate: plate)
+
+    ParkingReservation.new(vehicle: vehicle, check_in_at: Time.now)
+  end
+
+  def all_error_messages
+    errors.messages.merge(vehicle.errors.messages)
+  end
 
   #
   # Validation Methods
