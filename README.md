@@ -1,5 +1,9 @@
 # README
 
-## Running the application for the first time
+## Dev Environment
 
   - [Installation](INSTALL.md)
+
+## Relevant files
+
+  - [lib/numeric_helpers.rb](lib/numeric_helpers.rb)
